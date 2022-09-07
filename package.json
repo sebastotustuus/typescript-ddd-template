@@ -9,10 +9,10 @@
     "build:tsc": "tsc -p tsconfig.prod.json",
     "build:clean": "rm -r dist; exit 0",
     "start": "NODE_ENV=production node dist/src/index.js",
+    "start:dev": "NODE_ENV=development ts-node-dev --ignore-watch node_modules ./src/index.ts",
     "lint": "eslint ./src/** --ext .ts",
     "lint:fix": "eslint --fix ./src/** --ext .ts"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sebastotustuus/typescript-ddd-template.git"
@@ -35,12 +35,14 @@
     "cors": "^2.8.5",
     "diod": "^1.0.2",
     "express": "^4.18.1",
+    "glob": "8.0.3",
     "helmet": "^6.0.0"
   },
   "devDependencies": {
     "@types/compression": "^1.7.2",
     "@types/cors": "^2.8.12",
     "@types/express": "4.17.13",
+    "@types/glob": "^8.0.0",
     "@types/helmet": "^4.0.0",
     "@types/node": "18.7.14",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
