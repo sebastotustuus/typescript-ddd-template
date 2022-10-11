@@ -29,7 +29,7 @@ class ExpressRouter {
     }
 
     private injectRoutes() {
-        this.router.use('/flights', flightsRoutes.register(this.router))
+        this.router.use('/flights/api/v1', flightsRoutes.register(this.router))
         // Other routes...
     }
 }

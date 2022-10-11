@@ -9,7 +9,7 @@
     "build:tsc": "tsc -p tsconfig.prod.json",
     "build:clean": "rm -r dist; exit 0",
     "start": "NODE_ENV=production node dist/src/index.js",
-    "start:dev": "NODE_ENV=development ts-node-dev --ignore-watch node_modules ./src/index.ts",
+    "start:dev": "NODE_ENV=development ts-node-dev --ignore-watch node_modules ./src/api/index.ts",
     "lint": "eslint ./src/** --ext .ts",
     "lint:fix": "eslint --fix ./src/** --ext .ts"
   },

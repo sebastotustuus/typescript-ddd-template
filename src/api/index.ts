@@ -1,8 +1,9 @@
 import Server from "./server";
+import "reflect-metadata"
 
 const handleError = (e: any) => {
     console.log(e);
-    process.exit(1);
+    // process.exit(1);
 }
 
 try {
