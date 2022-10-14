@@ -1,7 +1,7 @@
 import { FlighterService } from "../../domain/flights/service";
-import Injectable from "../../../infrastructure/di/injectable";
+import { MyAppService } from "../../../infrastructure/di/injectable";
 
-@Injectable()
+@MyAppService()
 export default class FlightService implements FlighterService {
 
     constructor() { }

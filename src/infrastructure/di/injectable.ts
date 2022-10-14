@@ -1,14 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Newable } from "diod";
+// interface Newable<T> extends Function {
+//     new (...args: any[]): T;
+//   }
 
-export const registeredInjectables: Newable<any>[] = [];
+// export const registeredInjectables: Newable<any>[] = [];
 
-const Injectable = () => {
-    return (target: Newable<any>): Newable<any> => {
-        registeredInjectables.push(target);
+// export const Injectable = () => {    
+//     return (target: Newable<any>): Newable<any> => {
+        
+//         registeredInjectables.push(target);
+//         return target;
+//     };
+// };
 
-        return target;
-    };
-};
-
-export default Injectable;
+export const MyAppService = (): ClassDecorator => {
+    return <TFunction extends Function>(target: TFunction): TFunction => {
+      return target
+    }
+  }

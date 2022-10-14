@@ -1,20 +1,20 @@
 
 import cors from 'cors';
-import express, { Router } from 'express';
+import express, { Application } from 'express';
 import helmet from 'helmet';
 import compression from 'compression';
-
+import { buildContainer as container } from '../infrastructure/di/container';
 import flightsRoutes from "./modules/flights"
 
 class ExpressRouter {
-    private readonly router: Router
-
+    private readonly app: Application
+    
     constructor() {
-        this.router = express.Router()
+        this.app = express()
     }
 
-    public registerRoutes(): Router {
-        this.router
+    public registerRoutes(): Application {
+        this.app
             .use(express.json())
             .use(express.urlencoded({ extended: false }))
             .use(cors())
@@ -23,14 +23,18 @@ class ExpressRouter {
             .use(helmet.hidePoweredBy())
             .use(helmet.frameguard({ action: 'deny' }))
             .use(compression());
-        this.injectRoutes()
-
-        return this.router
+        this.configIoC();
+        this.injectRoutes();
+        return this.app;
     }
 
     private injectRoutes() {
-        this.router.use('/flights/api/v1', flightsRoutes.register(this.router))
+        this.app.use('/flights/api/v1', flightsRoutes.register(this.app))
         // Other routes...
+    }
+
+    private configIoC(){        
+        this.app.set('container', container());
     }
 }
 
